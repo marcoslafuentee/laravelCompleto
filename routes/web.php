@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProyectosController;
+use App\Http\Controllers\AlumnoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::resource("alumno", AlumnoController::class);
+
 Route::get('/', function () {
     return view('main');
 })->name("main");
 
-Route::view("proyectos","proyectos")
-->middleware("auth");
+Route::get("projects",[ProyectosController::class, "index"])
+->middleware("auth")
+->name("proyectos");
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

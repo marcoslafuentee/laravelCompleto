@@ -1,5 +1,7 @@
 @extends("layouts.layout")
-
+@section("titulo")
+    login
+@endsection
 @section("contenido")
     <div class="flex items-center justify-center h-full p-5 rounded-2xl">
         <div class="w-full max-w-md h-full">
@@ -12,7 +14,8 @@
                 <!-- Email Address -->
                 <div class="mb-4">
                     <x-input-label for="email" :value="__('Email')"/>
-                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                                  :value="old('email')"
                                   required autofocus autocomplete="username"/>
                     <x-input-error :messages="$errors->get('email')" class="mt-2"/>
                 </div>

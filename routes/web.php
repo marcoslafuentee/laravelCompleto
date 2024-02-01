@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\ProfesorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,15 +17,16 @@ use App\Http\Controllers\AlumnoController;
 |
 */
 
+Route::resource("profesores",ProfesorController::class);
 
-Route::resource("alumno", AlumnoController::class);
+
+Route::resource("alumnos", AlumnoController::class);
 
 Route::get('/', function () {
     return view('main');
 })->name("main");
 
 Route::get("projects",[ProyectosController::class, "index"])
-->middleware("auth")
 ->name("proyectos");
 
 

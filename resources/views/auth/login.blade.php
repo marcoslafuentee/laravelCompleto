@@ -8,16 +8,20 @@
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')"/>
 
-            <form method="POST" action="{{ route('login') }}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form method="POST" action="{{ route('login') }}"
+                  class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 @csrf
 
                 <!-- Email Address -->
                 <div class="mb-4">
                     <x-input-label for="email" :value="__('Email')"/>
-                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                    <x-text-input id="email" class="block mt-1 w-full"
+                                  type="email" name="email"
                                   :value="old('email')"
-                                  required autofocus autocomplete="username"/>
-                    <x-input-error :messages="$errors->get('email')" class="mt-2"/>
+                                  required autofocus
+                                  autocomplete="username"/>
+                    <x-input-error
+                        :messages="$errors->get('email')" class="mt-2"/>
                 </div>
 
                 <!-- Password -->

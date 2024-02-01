@@ -9,7 +9,7 @@ class ProyectosController extends Controller
 {
     //
     public function index(){
-        $proyectos = Proyecto::all();
-        return view ("proyectos", ["proyectos"=>$proyectos]);
+        echo "Estoy en index";
+
     }
 }

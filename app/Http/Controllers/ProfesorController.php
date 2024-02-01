@@ -51,9 +51,11 @@ class ProfesorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Profesor $profesor)
+    public function show(int $id)
     {
-        return "Estoy en el show con ";
+        $profesor= Profesor::find($id);
+        return view ("profesores.edit", ['profesor'=>$profesor]);
+
         //
     }
 
@@ -68,16 +70,24 @@ class ProfesorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProfesorRequest $request, Profesor $profesor)
+    public function update(UpdateProfesorRequest $request, int $id)
     {
+        $profesor = Profesor::find($id);
+        $profesor->update($request->input());
+        $profesores = Profesor::all();
+        return view ("profesores.listado",["profesores"=>$profesores]);
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Profesor $profesor)
+    public function destroy(int $id)
     {
+        $profesor = Profesor::find($id);
+        $profesor->delete();
+        $profesores = Profesor::all();
+        return view ("profesores.listado",["profesores"=>$profesores]);
         //
     }
 }
